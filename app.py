@@ -269,11 +269,11 @@ def load_cnn_models():
     from tensorflow.keras.layers import GlobalAveragePooling2D
     from tensorflow.keras.models import Model
 
-    base_xc = Xception(weights="imagenet", include_top=False, input_shape=(IMG_SIZE, IMG_SIZE, 3))
+    base_xc = Xception(weights=None, include_top=False, input_shape=(IMG_SIZE, IMG_SIZE, 3))
     base_xc.trainable = False
     xc_model = Model(base_xc.input, GlobalAveragePooling2D()(base_xc.output))
 
-    base_en = EfficientNetB0(weights="imagenet", include_top=False, input_shape=(IMG_SIZE, IMG_SIZE, 3))
+    base_en = EfficientNetB0(weights=None, include_top=False, input_shape=(IMG_SIZE, IMG_SIZE, 3))
     base_en.trainable = False
     en_model = Model(base_en.input, GlobalAveragePooling2D()(base_en.output))
 
